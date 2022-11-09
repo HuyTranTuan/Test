@@ -1,47 +1,46 @@
 import React, {useState} from "react"
-import Footer from "./component/footer/Footer";
-import Header from "./component/header/Header";
-import Sidebar from "./component/sidebar/Sidebar";
+import Footer from "./component/Page/footer/Footer";
+import Header from "./component/Page/header/Header";
+import Sidebar from "./component/Page/sidebar/Sidebar";
 import { Routes, Route } from "react-router-dom";
-import TodoListContainer from './component/TodoApp/TodoListContainer';
-import TodoSth from './component/TodoSth/TodoSth';
+import TodoSth from './component/Page/TodoSth/TodoSth';
+import Dashboard from "./component/Page/Dashboard/Dashboard";
 import "./App.css";
-import Dashboard from "./component/dashboard/Dashboard";
 
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMenuOpen: true
-    }
-    this.toggleMenu = this.toggleMenu.bind(this)
+const App = (props) =>{
+  const [state, setState] = useState({
+    isMenuOpen: true
+  });
+  function toggleMenu() {
+    setState({isMenuOpen: !state.isMenuOpen})
   }
-  toggleMenu() {
-    this.setState({isMenuOpen: !this.state.isMenuOpen})
-  }
-
-
-  render(){
-    return (
-      <div id="container">
-        <Sidebar
-          isMenuOpen={this.state.isMenuOpen}
-          onMenuToggle={this.toggleMenu}
+  
+  return (
+    <div id="container" className={`container${state.isMenuOpen === true ? ' open' : ''}`}>
+      <Sidebar
+        isMenuOpen={state.isMenuOpen}
+        onMenuToggle={toggleMenu}
+      />
+      <div className={`right-container${state.isMenuOpen === true ? ' open' : ''}`}>
+        <Header
+          onMenuToggle={toggleMenu}
+          isMenuOpen={state.isMenuOpen}
         />
-        <div className={`right-container${this.state.isMenuOpen === true ? ' open' : ''}`}>
-          <Header onMenuToggle={this.toggleMenu}/>
-          <div className="main-content">
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/todo-app" element={<TodoListContainer />} />
-              <Route path="/todo-sth" element={<TodoSth />} />
-            </Routes>
-          </div>
-          <Footer/>
+        <div className={`main-content${state.isMenuOpen === true ? ' open' : ''}`}>
+          <Routes>
+            <Route path="/dashboard"element={<Dashboard />}/>
+            <Route path="/todo-sth" element={<TodoSth />} />
+          </Routes>
         </div>
+        <Footer 
+          onMenuToggle={toggleMenu}
+          isMenuOpen={state.isMenuOpen}
+        />
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default App;
 

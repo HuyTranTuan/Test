@@ -1,7 +1,13 @@
 #footer{
     position: fixed;
     bottom: 0;
+    right: 0;
     background: linear-gradient(60deg, #141E30, #243B55, #292e49);
-    width: 100%;
+    width: calc(100% - 80px);
     height: 50px;
+    transition: 0.3s ease all;
+}
+
+#footer.open{
+    width: calc(100% - 300px);
 }
