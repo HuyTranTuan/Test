@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BtnClick from './BtnClick';
 import './Elements.css'
 
-const Elements = ({id, key, value, ilClass, clickEdit, clickDelete}) => {
+const Elements = ({id, value, ilClass, clickEdit, clickDelete}) => {
 
     const [newValue, setNewValue] = useState('');
     const [isEdit, setIsEdit] = useState(false);
@@ -18,10 +18,10 @@ const Elements = ({id, key, value, ilClass, clickEdit, clickDelete}) => {
 
 
     return (
-        <div key={key} style={{display: 'flex', justifyContent: 'space-between', gap: "20px"}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', gap: "20px"}}>
             {   !isEdit 
-                ? <li className={ilClass}>{value}</li> 
-                : <li className={ilClass}>
+                ? <li  key={id} className={ilClass}>{value}</li> 
+                : <li  key={id} className={ilClass}>
                     <input
                         type="text"
                         value={newValue}

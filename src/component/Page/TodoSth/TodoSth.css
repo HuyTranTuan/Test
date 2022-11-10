@@ -12,7 +12,7 @@
 }
 
 .todo-array-element:hover{
-    background-color: brown6;
+    background-color: rgba(228, 218, 173, 0.84);
 }
 
 .todo-array-element::marker{

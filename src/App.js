@@ -12,15 +12,32 @@ const App = (props) =>{
   const [state, setState] = useState({
     isMenuOpen: true
   });
+
+  const sidebarArray = [
+    {
+      id: 1,
+      path: "/dashboard",
+      element: <Dashboard />,
+      name: "Dashboard",
+      icon: ""
+    },
+    {
+      id: 2,
+      path: "/todo-sth",
+      element: <TodoSth />,
+      name: "Todo App",
+      icon: ""
+    },
+  ];
   function toggleMenu() {
     setState({isMenuOpen: !state.isMenuOpen})
   }
-  
   return (
     <div id="container" className={`container${state.isMenuOpen === true ? ' open' : ''}`}>
       <Sidebar
         isMenuOpen={state.isMenuOpen}
         onMenuToggle={toggleMenu}
+        sidebarArray={sidebarArray}
       />
       <div className={`right-container${state.isMenuOpen === true ? ' open' : ''}`}>
         <Header
@@ -29,8 +46,7 @@ const App = (props) =>{
         />
         <div className={`main-content${state.isMenuOpen === true ? ' open' : ''}`}>
           <Routes>
-            <Route path="/dashboard"element={<Dashboard />}/>
-            <Route path="/todo-sth" element={<TodoSth />} />
+            {sidebarArray.map((value)=> <Route key={value.id} path={value.path} element={value.element}/>)}
           </Routes>
         </div>
         <Footer 
