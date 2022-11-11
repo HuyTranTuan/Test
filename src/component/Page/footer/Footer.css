@@ -11,3 +11,10 @@
 #footer.open{
     width: calc(100% - 300px);
 }
+
+@media screen and (max-width: 1000px) {
+    #footer.open{
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+}

@@ -30,3 +30,11 @@
     border:whitesmoke solid 2px;
     color: #2e8495;
 }
+
+
+@media screen and (max-width: 1000px) {
+    .header.open{
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+}

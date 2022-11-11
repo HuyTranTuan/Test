@@ -31,3 +31,11 @@
 .main-content::-webkit-scrollbar {
   display: none;
 }
+
+
+@media screen and (max-width: 1000px) {
+  .right-container.open{
+    width: calc(100% - 100px);
+    margin-left: 80px;
+  }
+}

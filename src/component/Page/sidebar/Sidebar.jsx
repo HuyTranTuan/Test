@@ -10,7 +10,10 @@ const Sidebar = ({isMenuOpen, sidebarArray}) => {
         <li className='sidebar-nav-element'><Link to="/todo-sth" className='nav-link'>Todo Sth</Link></li> */}
         {sidebarArray.map((value, index)=>
           <li key={index} className='sidebar-nav-element'>
-            <Link to={value.path} className='nav-link'>{value.name}</Link>
+            <Link to={value.path} className='nav-link'>
+              <span className='nav-link-icon'>{value.icon}</span>
+              <span className='nav-link-text'>{value.name}</span>
+            </Link>
           </li>)
         }
       </ul>
